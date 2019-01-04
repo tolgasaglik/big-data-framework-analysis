@@ -1,0 +1,28 @@
+easyblock = 'Tarball'
+
+name = 'apache-storm'
+version = '1.2.2'
+versionsuffix = ''
+
+homepage = 'http://storm.apache.org'
+description="""Apache Storm is a framework and distributed processing engine for stateful computations over unbounded and bounded data streams."""
+toolchain = {'name': 'dummy', 'version': '1.2.2'}
+
+sources =['%(namelower)s-%(version)s']
+source_urls = [
+    'http://www.eu.apache.org/dist/storm/%(name)s-%(version)s/',
+    'http://www.us.apache.org/dist/storm/%(name)s-%(version)s/',
+]
+checksums = [('sha512','0A1120B8 DF7B22ED C75F0A41 2D625841 F72F3FB8 E9FF5D41 3D510908 D68EA1F0 C17D68C1 A7F1EDA4 27B40902 452E9EFC AE902C36 499B5585 92E41CC1 079DE2E0')]
+
+dependencies = [('Java', '1.8.0_162')]
+
+sanity_check_paths = {
+    'dirs': ['conf'],
+    'files':['bin/storm']
+}
+
+modextrapaths = {'STORMPATH': 'storm'}
+
+moduleclass = 'devel'
+
