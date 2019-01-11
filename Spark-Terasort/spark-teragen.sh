@@ -11,11 +11,11 @@
 #SBATCH --partition=batch
 #SBATCH --qos qos-batch
 #
-###SBATCH -N $NODES
-####SBATCH --ntasks-per-node=$NTASKS
+###SBATCH -N 2
+###SBATCH --ntasks-per-node=3
 ### -c, --cpus-per-task=<ncpus>
 ###     (multithreading) Request that ncpus be allocated per process
-#SBATCH -c 7
+#SBATCH -c 6
 #SBATCH --exclusive
 #SBATCH --mem=0
 #SBATCH --dependency=singleton
@@ -107,7 +107,7 @@ export SPARK_HOME=$EBROOTSPARK
 ### Spark app and option -- /!\ ADAPT ACCORDINGLY
 TERA_HOME=$HOME/big-data-framework-analysis/terasort/spark-terasort
 APP=$HOME/big-data-framework-analysis/terasort/spark-terasort/target/spark-terasort-1.1-SNAPSHOT-jar-with-dependencies.jar
-OPTS=5g
+OPTS=100G
 #################################################
 
 # See sbin/spark-daemon.sh
@@ -140,7 +140,7 @@ export SPARK_MASTER_WEBUI_PORT=8082
 
 # Custom launcher for the slaves
 SPARK_SLAVE_LAUNCHER=${SPARK_WORKER_DIR}/spark-start-slaves-${SLURM_JOBID}.sh
-OUTPUTFILE=result_${SLURM_JOB_NAME}-${SLURM_JOB_ID}.out
+OUTPUTFILE=result_${SLURM_JOB_NAME}-${SLURM_JOB_ID}-ntasks-${SLURM_NTASKS}.out
 
 ###############################################
 ##   --------------------------------------  ##
@@ -209,8 +209,7 @@ if [ -n "${SETUP_SLAVE}" ]; then
         ##       start-slave.sh ${MASTER_URL} &
 
     srun --output=${SPARK_LOG_DIR}/spark-%j-workers.out \
-         --label \
-         ${SPARK_SLAVE_LAUNCHER} &
+         --label ${SPARK_SLAVE_LAUNCHER} &
 fi
 
 
@@ -233,10 +232,10 @@ if [ -n "${MODE_INTERACTIVE}" ]; then
       --conf spark.driver.memory=${SPARK_DAEMON_MEMORY} \
       --conf spark.executor.memory=${SPARK_EXECUTOR_MEMORY} \
       --executor-memory ${SPARK_WORKER_MEMORY} \
-      --total-executor-cores ${SPARK_WORKER_CORES} \
+      --total-executor-cores ${SPARK_TOTAL_EXECUTER_CORES} \
       --class com.github.ehiggs.spark.terasort.TeraGen \
-      ${TERA_HOME}/target/spark-terasort-1.1-SNAPSHOT-jar-with-dependencies.jar 5g \
-      /dev/shm/data/terasort_in
+      ${TERA_HOME}/target/spark-terasort-1.1-SNAPSHOT-jar-with-dependencies.jar 100g \
+      $HOME/data/terasort_in
 EOF
     exit 0
 fi
@@ -246,16 +245,16 @@ echo "=> running '${APP} ${OPTS}' on Spark cluster"
 echo "=> output file: ${OUTPUTFILE}"
 cat << EOF
 
-srun spark-submit \
-      --master spark://$(scontrol show hostname $SLURM_NODELIST | head -n 1):7077 \
+
+time spark-submit \
+      --master spark://$(scontrol show hostname $SLURM_NODELIST | head -n 1):7077} \
       --conf spark.driver.memory=${SPARK_DAEMON_MEMORY} \
       --conf spark.executor.memory=${SPARK_EXECUTOR_MEMORY} \
       --executor-memory ${SPARK_WORKER_MEMORY} \
-      --total-executor-cores ${SPARK_WORKER_CORES} \
-      --class com.github.ehiggs.spark.terasort.TeraSort \
-      ${APP} \
-      /dev/shm/data/terasort_in /dev/shm/data/terasort_out >> ${OUTPUTFILE}
-
+      --total-executor-cores ${SPARK_TOTAL_EXECUTER_CORES} \
+      --class com.github.ehiggs.spark.terasort.TeraGen \
+      ${APP} ${OPTS} \
+      $HOME/terasort-30times/data/terasort_in > ${OUTPUTFILE}
 
 EOF
 
@@ -265,10 +264,35 @@ time spark-submit \
       --conf spark.driver.memory=${SPARK_DAEMON_MEMORY} \
       --conf spark.executor.memory=${SPARK_EXECUTOR_MEMORY} \
       --executor-memory ${SPARK_WORKER_MEMORY} \
-      --total-executor-cores ${SPARK_WORKER_CORES} \
-      --class com.github.ehiggs.spark.terasort.TeraSort \
-      ${APP} \
-      /dev/shm/data/terasort_in /dev/shm/data/terasort_out >> ${OUTPUTFILE}
+      --total-executor-cores ${SPARK_TOTAL_EXECUTER_CORES} \
+      --class com.github.ehiggs.spark.terasort.TeraGen \
+      ${APP} ${OPTS} \
+      $HOME/data/terasort_in > ${OUTPUTFILE}
+
+# sleep 1
+
+# time spark-submit \
+#       --master ${MASTER_URL} \
+#       --conf spark.driver.memory=${SPARK_DAEMON_MEMORY} \
+#       --conf spark.executor.memory=${SPARK_EXECUTOR_MEMORY} \
+#       --executor-memory ${SPARK_WORKER_MEMORY} \
+#       --total-executor-cores ${SPARK_TOTAL_EXECUTER_CORES} \
+#       --class com.github.ehiggs.spark.terasort.TeraSort \
+#       ${APP} \
+#       $HOME/data/terasort_in $HOME/data/terasort_out >> ${OUTPUTFILE}
+
+
+# sleep 1
+
+# time spark-submit \
+#       --master ${MASTER_URL} \
+#       --conf spark.driver.memory=${SPARK_DAEMON_MEMORY} \
+#       --conf spark.executor.memory=${SPARK_EXECUTOR_MEMORY} \
+#       --executor-memory ${SPARK_WORKER_MEMORY} \
+#       --total-executor-cores ${SPARK_TOTAL_EXECUTER_CORES} \
+#       --class com.github.ehiggs.spark.terasort.TeraValidate \
+#       ${APP} \
+#       $HOME/data/terasort_out $HOME/data/terasort_validate >> ${OUTPUTFILE}
 
 
 echo "==========================================="

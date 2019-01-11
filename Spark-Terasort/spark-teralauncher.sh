@@ -11,8 +11,8 @@
 #SBATCH --partition=batch
 #SBATCH --qos qos-batch
 #
-###SBATCH -N $NODES
-####SBATCH --ntasks-per-node=$NTASKS
+###SBATCH -N 2
+###SBATCH --ntasks-per-node=3
 ### -c, --cpus-per-task=<ncpus>
 ###     (multithreading) Request that ncpus be allocated per process
 #SBATCH -c 7
@@ -107,7 +107,7 @@ export SPARK_HOME=$EBROOTSPARK
 ### Spark app and option -- /!\ ADAPT ACCORDINGLY
 TERA_HOME=$HOME/big-data-framework-analysis/terasort/spark-terasort
 APP=$HOME/big-data-framework-analysis/terasort/spark-terasort/target/spark-terasort-1.1-SNAPSHOT-jar-with-dependencies.jar
-OPTS=5g
+OPTS=100G
 #################################################
 
 # See sbin/spark-daemon.sh
@@ -233,10 +233,10 @@ if [ -n "${MODE_INTERACTIVE}" ]; then
       --conf spark.driver.memory=${SPARK_DAEMON_MEMORY} \
       --conf spark.executor.memory=${SPARK_EXECUTOR_MEMORY} \
       --executor-memory ${SPARK_WORKER_MEMORY} \
-      --total-executor-cores ${SPARK_WORKER_CORES} \
+      --total-executor-cores ${SPARK_TOTAL_EXECUTER_CORES} \
       --class com.github.ehiggs.spark.terasort.TeraGen \
       ${TERA_HOME}/target/spark-terasort-1.1-SNAPSHOT-jar-with-dependencies.jar 5g \
-      /dev/shm/data/terasort_in
+      $HOME/data/terasort_in
 EOF
     exit 0
 fi
@@ -252,10 +252,34 @@ time spark-submit \
       --conf spark.driver.memory=${SPARK_DAEMON_MEMORY} \
       --conf spark.executor.memory=${SPARK_EXECUTOR_MEMORY} \
       --executor-memory ${SPARK_WORKER_MEMORY} \
-      --total-executor-cores ${SPARK_WORKER_CORES} \
+      --total-executor-cores ${SPARK_TOTAL_EXECUTER_CORES} \
       --class com.github.ehiggs.spark.terasort.TeraGen \
       ${APP} ${OPTS} \
-      /dev/shm/data/terasort_in > ${OUTPUTFILE}
+      $HOME/data/terasort_in > ${OUTPUTFILE}
+
+sleep 2
+
+time spark-submit \
+      --master spark://$(scontrol show hostname $SLURM_NODELIST | head -n 1):7077 \
+      --conf spark.driver.memory=${SPARK_DAEMON_MEMORY} \
+      --conf spark.executor.memory=${SPARK_EXECUTOR_MEMORY} \
+      --executor-memory ${SPARK_WORKER_MEMORY} \
+      --total-executor-cores ${SPARK_TOTAL_EXECUTER_CORES} \
+      --class com.github.ehiggs.spark.terasort.TeraSort \
+      ${APP} \
+      $HOME/data/terasort_in $HOME/data/terasort_out >> ${OUTPUTFILE}
+
+sleep 2
+
+time spark-submit \
+      --master spark://$(scontrol show hostname $SLURM_NODELIST | head -n 1):7077 \
+      --conf spark.driver.memory=${SPARK_DAEMON_MEMORY} \
+      --conf spark.executor.memory=${SPARK_EXECUTOR_MEMORY} \
+      --executor-memory ${SPARK_WORKER_MEMORY} \
+      --total-executor-cores ${SPARK_TOTAL_EXECUTER_CORES} \
+      --class com.github.ehiggs.spark.terasort.TeraValidate \
+      ${APP} \
+      $HOME/data/terasort_out $HOME/data/terasort_validate >> ${OUTPUTFILE}
 
 EOF
 
@@ -265,10 +289,36 @@ time spark-submit \
       --conf spark.driver.memory=${SPARK_DAEMON_MEMORY} \
       --conf spark.executor.memory=${SPARK_EXECUTOR_MEMORY} \
       --executor-memory ${SPARK_WORKER_MEMORY} \
-      --total-executor-cores ${SPARK_WORKER_CORES} \
+      --total-executor-cores ${SPARK_TOTAL_EXECUTER_CORES} \
       --class com.github.ehiggs.spark.terasort.TeraGen \
       ${APP} ${OPTS} \
-      /dev/shm/data/terasort_in > ${OUTPUTFILE}
+      $HOME/data/terasort_in > ${OUTPUTFILE}
+
+sleep 1
+
+
+time spark-submit \
+      --master ${MASTER_URL} \
+      --conf spark.driver.memory=${SPARK_DAEMON_MEMORY} \
+      --conf spark.executor.memory=${SPARK_EXECUTOR_MEMORY} \
+      --executor-memory ${SPARK_WORKER_MEMORY} \
+      --total-executor-cores ${SPARK_TOTAL_EXECUTER_CORES} \
+      --class com.github.ehiggs.spark.terasort.TeraSort \
+      ${APP} \
+      $HOME/data/terasort_in $HOME/data/terasort_out >> ${OUTPUTFILE}
+
+
+sleep 1
+
+time spark-submit \
+      --master ${MASTER_URL} \
+      --conf spark.driver.memory=${SPARK_DAEMON_MEMORY} \
+      --conf spark.executor.memory=${SPARK_EXECUTOR_MEMORY} \
+      --executor-memory ${SPARK_WORKER_MEMORY} \
+      --total-executor-cores ${SPARK_TOTAL_EXECUTER_CORES} \
+      --class com.github.ehiggs.spark.terasort.TeraValidate \
+      ${APP} \
+      $HOME/data/terasort_out $HOME/data/terasort_validate >> ${OUTPUTFILE}
 
 
 echo "==========================================="

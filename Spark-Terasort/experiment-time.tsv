@@ -1,0 +1,39 @@
+##gen,sort,val same job
+10G data
+jobID,nNodes,nTasks,nCores,generate,sort,validate
+234755,1,1,7,1m4.864s,1m0.408s,
+234682,1,2,7,1m4.864s,0m37.451s,0m18.469s
+234683,1,3,7,1m4.978s,0m29.321s,0m26.907s
+234684,1,4,7,1m3.446s,0m25.920s,0m18.420s
+234685,2,3,7,0m51.602s,0m26.467s,0m13.540s
+234686,2,4,7,0m53.600s,0m19.458s,0m13.991s
+234687,3,3,7,1m7.327s,0m26.194s,0m16.453s
+234688,3,4,7,1m7.201s,0m24.868s,0m16.377s
+234689,4,3,7,1m6.008s,0m32.718s,0m16.315s
+234690,4,4,7,1m3.773s,0m23.069s,0m17.075s
+
+100G
+jobID,nNodes,nTasks,nCores,generate,sort,validate
+234715,1,1,7,9m18.695s,11m48.166s,3m44.319s
+234695,1,2,7,10m12.490s,8m26.292s,3m8.003s
+234696,1,3,7,10m21.051s,7m31.501s,2m37.974s
+234697,1,4,7,9m11.107s,7m3.989s,2m39.815s
+234698,2,3,7,10m58.967s,3m9.912s,2m30.065s
+234699,2,4,7,10m48.934s,2m48.155s,1m50.463s
+234713,3,3,7,11m2.644s,2m2.219s,1m53.664s
+234701,3,4,7,11m10.287s,1m55.593s,1m45.982s
+234702,4,3,7,10m57.247s,1m50.333s,2m46.989s
+234703,4,4,7,10m59.281s,1m46.110s,1m42.109s
+
+
+
+[tsaglik@access1 ~]$ sacct --format JobID,JobIDRaw,JobName,User,Group,Partition,MaxRSS,MaxPages,AveCPU,MaxDiskWrite,MaxDiskRead,MaxVMSize,NTasks,AllocCPUS,Submit,Start,Elapsed,End,State,ExitCode,ReqMem,Timelimit -s BF,CA,CD,F,NF,PR,TO -j 234322
+       JobID     JobIDRaw    JobName      User     Group  Partition     MaxRSS MaxPages     AveCPU MaxDiskWrite  MaxDiskRead  MaxVMSize   NTasks  AllocCPUS              Submit               Start    Elapsed                 End      State ExitCode     ReqMem  Timelimit 
+------------ ------------ ---------- --------- --------- ---------- ---------- -------- ---------- ------------ ------------ ---------- -------- ---------- ------------------- ------------------- ---------- ------------------- ---------- -------- ---------- ---------- 
+234322       234322        teraSpark   tsaglik clusteru+      batch                                                                                      28 2019-01-10T14:49:39 2019-01-10T14:49:39   00:00:47 2019-01-10T14:50:26  COMPLETED      0:0   128824Mn   05:00:00 
+234322.batch 234322.batch      batch                                  1141728K       5K   00:00:22        0.01M        6.81M    193364K        1         28 2019-01-10T14:49:39 2019-01-10T14:49:39   00:00:47 2019-01-10T14:50:26  COMPLETED      0:0   128824Mn            
+234322.exte+ 234322.exte+     extern                                         0        0   00:00:00            0        0.00M    107952K        1         28 2019-01-10T14:49:39 2019-01-10T14:49:39   00:00:47 2019-01-10T14:50:26  COMPLETED      0:0   128824Mn            
+234322.0     234322.0     spark-sta+                                  2887408K        0   00:00:58        0.00M        0.08M    328656K        2         14 2019-01-10T14:49:46 2019-01-10T14:49:46   00:00:42 2019-01-10T14:50:28 CANCELLED+      0:9   128824Mn      
+
+
+

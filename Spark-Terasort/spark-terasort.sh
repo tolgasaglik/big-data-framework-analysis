@@ -18,7 +18,6 @@
 #SBATCH -c 7
 #SBATCH --exclusive
 #SBATCH --mem=0
-#SBATCH --job-name=TeraSpark
 #SBATCH --dependency=singleton
 
 ### Guess the run directory
@@ -103,6 +102,14 @@ module load devel/Spark
 
 ### Spark configuration
 export SPARK_HOME=$EBROOTSPARK
+
+#################################################
+### Spark app and option -- /!\ ADAPT ACCORDINGLY
+TERA_HOME=$HOME/big-data-framework-analysis/terasort/spark-terasort
+APP=$HOME/big-data-framework-analysis/terasort/spark-terasort/target/spark-terasort-1.1-SNAPSHOT-jar-with-dependencies.jar
+OPTS=100g
+#################################################
+
 # See sbin/spark-daemon.sh
 # identify the Spark cluster with the Slurm jobid
 export SPARK_IDENT_STRING=${SLURM_JOBID}
@@ -135,13 +142,75 @@ export SPARK_MASTER_WEBUI_PORT=8082
 SPARK_SLAVE_LAUNCHER=${SPARK_WORKER_DIR}/spark-start-slaves-${SLURM_JOBID}.sh
 OUTPUTFILE=result_${SLURM_JOB_NAME}-${SLURM_JOB_ID}.out
 
+###############################################
+##   --------------------------------------  ##
+##   1. Start the Spark cluster master       ##
+##   --------------------------------------  ##
+###############################################
+#
+export SPARK_MASTER_HOST=$(hostname -s)
+export SPARK_MASTER_OPTS=
+
+# sbin/start-master.sh - Starts a master instance on the machine the script is executed on.
+if [ -n "${SETUP_MASTER}" ]; then
+    start-master.sh --host ${SPARK_MASTER_HOST} --webui-port ${SPARK_MASTER_WEBUI_PORT}
+    sleep 2
+fi
+MASTER_URL=$(grep -Po '(?=spark://).*' \
+                  ${SPARK_LOG_DIR}/spark-${SPARK_IDENT_STRING}-org.*master*.out)
+
+echo "=========================================="
+echo "============== Spark Master =============="
+echo "=========================================="
+echo "url: ${MASTER_URL}"
+echo "Web UI: http://${SPARK_MASTER_HOST}:${SPARK_MASTER_WEBUI_PORT}"
+echo ""
 
 #################################################
-### Spark app and option -- /!\ ADAPT ACCORDINGLY
-TERA_HOME=$HOME/big-data-framework-analysis/terasort/spark-terasort
-APP=$HOME/big-data-framework-analysis/terasort/spark-terasort/target/spark-terasort-1.1-SNAPSHOT-jar-with-dependencies.jar
-OPTS=5g
+##   --------------------------------------    ##
+##   2. Start the Spark cluster workers        ##
+##   --------------------------------------    ##
 #################################################
+#
+export SPARK_WORKER_OPTS=
+
+echo "==========================================="
+echo "============ ${SLURM_NTASKS} Spark Workers =============="
+echo "==========================================="
+echo "export SPARK_HOME=\$EBROOTSPARK"
+echo "export MASTER_URL=${MASTER_URL}"
+echo "export SPARK_DAEMON_MEMORY=${SPARK_DAEMON_MEMORY}"
+echo "export SPARK_WORKER_CORES=${SPARK_WORKER_CORES}"
+echo "export SPARK_WORKER_MEMORY=${SPARK_WORKER_MEMORY}"
+echo "export SPARK_EXECUTOR_MEMORY=${SPARK_EXECUTOR_MEMORY}"
+echo ""
+
+# Prepare the customized launcher for slave workers
+echo " - create slave launcher script '${SPARK_SLAVE_LAUNCHER}'"
+cat << 'EOF' > ${SPARK_SLAVE_LAUNCHER}
+#!/bin/bash
+CORE=${SLURM_CPUS_PER_TASK:-1}
+MASTER_URL="spark://$(scontrol show hostname $SLURM_NODELIST | head -n 1):7077"
+if [[ ${SLURM_PROCID} -eq 0 ]]; then
+   # Start one slave with one less core than the others on this node
+   export SPARK_WORKER_CORES=$((${SLURM_CPUS_PER_TASK}-1))
+fi
+# sbin/start-slave.sh - Starts a slave instance on the machine the script is executed on.
+${SPARK_HOME}/sbin/start-slave.sh ${MASTER_URL}
+EOF
+chmod +x ${SPARK_SLAVE_LAUNCHER}
+
+if [ -n "${SETUP_SLAVE}" ]; then
+    # See sbin/spark-daemon.sh
+    # SPARK_NO_DAEMONIZE: If set, will run the proposed command in the foreground.
+    export SPARK_NO_DAEMONIZE=1
+    ## sbin/start-slave.sh - Starts a slave instance on the machine the script is executed on.
+    ## srun  --output=${SPARK_LOG_DIR}/spark-%j-workers.out --label \
+        ##       start-slave.sh ${MASTER_URL} &
+
+    srun --output=${SPARK_LOG_DIR}/spark-%j-workers.out \
+         --label ${SPARK_SLAVE_LAUNCHER} &
+fi
 
 
 #################################################
@@ -164,9 +233,9 @@ if [ -n "${MODE_INTERACTIVE}" ]; then
       --conf spark.executor.memory=${SPARK_EXECUTOR_MEMORY} \
       --executor-memory ${SPARK_WORKER_MEMORY} \
       --total-executor-cores ${SPARK_WORKER_CORES} \
-      --class com.github.ehiggs.spark.terasort.TeraGen \
-      ${TERA_HOME}/target/spark-terasort-1.1-SNAPSHOT-jar-with-dependencies.jar 5g \
-      /dev/shm/data/terasort_in
+      --class com.github.ehiggs.spark.terasort.TeraSort \
+      ${TERA_HOME}/target/spark-terasort-1.1-SNAPSHOT-jar-with-dependencies.jar 100g \
+      $HOME/data/terasort_in
 EOF
     exit 0
 fi
@@ -176,81 +245,49 @@ echo "=> running '${APP} ${OPTS}' on Spark cluster"
 echo "=> output file: ${OUTPUTFILE}"
 cat << EOF
 
-
-srun spark-submit \
-      --master spark://$(scontrol show hostname $SLURM_NODELIST | head -n 1):7077} \
-      --conf spark.driver.memory=${SPARK_DAEMON_MEMORY} \
-      --conf spark.executor.memory=${SPARK_EXECUTOR_MEMORY} \
-      --executor-memory ${SPARK_WORKER_MEMORY} \
-      --total-executor-cores ${SPARK_WORKER_CORES} \
-      --class com.github.ehiggs.spark.terasort.TeraGen \
-      ${APP} ${OPTS} \
-      /dev/shm/data/terasort_in > ${OUTPUTFILE}
-
-sleep 2
-
-srun spark-submit \
+spark-submit \
       --master spark://$(scontrol show hostname $SLURM_NODELIST | head -n 1):7077 \
       --conf spark.driver.memory=${SPARK_DAEMON_MEMORY} \
       --conf spark.executor.memory=${SPARK_EXECUTOR_MEMORY} \
       --executor-memory ${SPARK_WORKER_MEMORY} \
-      --total-executor-cores ${SPARK_WORKER_CORES} \
+      --total-executor-cores ${SPARK_TOTAL_EXECUTER_CORES} \
       --class com.github.ehiggs.spark.terasort.TeraSort \
       ${APP} \
-      /dev/shm/data/terasort_in /dev/shm/data/terasort_out >> ${OUTPUTFILE}
+      $HOME/data/terasort_in $HOME/data/terasort_out >> ${OUTPUTFILE}
 
-sleep 2
-
-srun spark-submit \
-      --master spark://$(scontrol show hostname $SLURM_NODELIST | head -n 1):7077 \
-      --conf spark.driver.memory=${SPARK_DAEMON_MEMORY} \
-      --conf spark.executor.memory=${SPARK_EXECUTOR_MEMORY} \
-      --executor-memory ${SPARK_WORKER_MEMORY} \
-      --total-executor-cores ${SPARK_WORKER_CORES} \
-      --class com.github.ehiggs.spark.terasort.TeraValidate \
-      ${APP} \
-      /dev/shm/data/terasort_out /dev/shm/data/terasort_validate >> ${OUTPUTFILE}
 
 EOF
 
 
-srun time spark-submit \
+time spark-submit \
       --master ${MASTER_URL} \
       --conf spark.driver.memory=${SPARK_DAEMON_MEMORY} \
       --conf spark.executor.memory=${SPARK_EXECUTOR_MEMORY} \
       --executor-memory ${SPARK_WORKER_MEMORY} \
-      --total-executor-cores ${SPARK_WORKER_CORES} \
-      --class com.github.ehiggs.spark.terasort.TeraGen \
-      ${APP} ${OPTS} \
-      /dev/shm/data/terasort_in > ${OUTPUTFILE}
-
-sleep 1
-
-
-srun time spark-submit \
-      --master ${MASTER_URL} \
-      --conf spark.driver.memory=${SPARK_DAEMON_MEMORY} \
-      --conf spark.executor.memory=${SPARK_EXECUTOR_MEMORY} \
-      --executor-memory ${SPARK_WORKER_MEMORY} \
-      --total-executor-cores ${SPARK_WORKER_CORES} \
+      --total-executor-cores ${SPARK_TOTAL_EXECUTER_CORES} \
       --class com.github.ehiggs.spark.terasort.TeraSort \
       ${APP} \
-      /dev/shm/data/terasort_in /dev/shm/data/terasort_out >> ${OUTPUTFILE}
-
-
-sleep 1
-
-srun time spark-submit \
-      --master ${MASTER_URL} \
-      --conf spark.driver.memory=${SPARK_DAEMON_MEMORY} \
-      --conf spark.executor.memory=${SPARK_EXECUTOR_MEMORY} \
-      --executor-memory ${SPARK_WORKER_MEMORY} \
-      --total-executor-cores ${SPARK_WORKER_CORES} \
-      --class com.github.ehiggs.spark.terasort.TeraValidate \
-      ${APP} \
-      /dev/shm/data/terasort_out /dev/shm/data/terasort_validate >> ${OUTPUTFILE}
+      $HOME/terasort-30runs/data/terasort_in $HOME/terasort-30runs/data/terasort_out >> ${OUTPUTFILE}
 
 
 echo "==========================================="
 echo "=> check the output file: ${OUTPUTFILE}"
 echo
+
+
+################################################
+##    --------------------------------------  ##
+##    4. Clean up                             ##
+##    --------------------------------------  ##
+################################################
+# stop the workers
+if [ -n "${SETUP_SLAVE}" ]; then
+    echo "=> stopping worker(s)"
+    scancel ${SLURM_JOBID}.0
+    #srun --label stop-slave.sh
+fi
+# stop the master
+if [ -n "${SETUP_MASTER}" ]; then
+    echo "=> stopping spark master"
+    stop-master.sh
+fi
