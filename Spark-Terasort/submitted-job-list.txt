@@ -1,271 +1,279 @@
-235270     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (QOSGrpCpuLimit)
-235276     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235277     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235278     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235279     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235280     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235281     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235282     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235283     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235284     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235285     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235286     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235287     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235288     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235289     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235290     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235291     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235292     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235293     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235294     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235295     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235296     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235297     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235298     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235299     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235300     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235301     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235302     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235303     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235304     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235305     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235306     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235307     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235308     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235309     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235310     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235311     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235312     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235313     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235314     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235315     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235316     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235317     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235318     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235319     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235320     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235321     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235322     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235323     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235324     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235325     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235326     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235327     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235328     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235329     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235330     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235331     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235332     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235333     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235334     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235335     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235336     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235337     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235338     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235339     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235340     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235341     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235342     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235343     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235344     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235345     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235346     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235347     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235348     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235349     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235350     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235351     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235352     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235353     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235354     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235355     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235356     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235357     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235358     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235359     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235360     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235361     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235362     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235363     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235364     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235365     batch    Spark  tsaglik  PENDING       0:00   5:00:00      1 (Dependency)
-235366     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235367     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235368     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235369     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235370     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235371     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235372     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235373     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235374     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235375     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235376     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235377     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235378     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235379     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235380     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235381     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235382     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235383     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235384     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235385     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235386     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235387     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235388     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235389     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235390     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235391     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235392     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235393     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235394     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235395     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235396     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235397     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235398     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235399     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235400     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235401     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235402     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235403     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235404     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235405     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235406     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235407     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235408     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235409     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235410     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235411     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235412     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235413     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235414     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235415     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235416     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235417     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235418     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235419     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235420     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235421     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235422     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235423     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235424     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235425     batch    Spark  tsaglik  PENDING       0:00   5:00:00      2 (Dependency)
-235426     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235427     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235428     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235429     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235430     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235431     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235432     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235433     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235434     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235435     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235436     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235437     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235438     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235439     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235440     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235441     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235442     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235443     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235444     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235445     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235446     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235447     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235448     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235449     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235450     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235451     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235452     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235453     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235454     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235455     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235456     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235457     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235458     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235459     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235460     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235461     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235462     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235463     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235464     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235465     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235466     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235467     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235468     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235469     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235470     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235471     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235472     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235473     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235474     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235475     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235476     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235477     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235478     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235479     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235481     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235482     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235483     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235484     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235485     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235486     batch    Spark  tsaglik  PENDING       0:00   5:00:00      3 (Dependency)
-235487     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235488     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235489     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235490     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235491     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235492     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235493     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235494     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235495     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235496     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235497     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235498     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235499     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235500     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235501     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235502     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235503     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235504     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235505     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235506     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235507     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235508     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235509     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235510     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235511     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235512     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235513     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235514     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235515     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235516     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235517     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235518     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235519     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235520     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235521     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235522     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235523     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235524     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235525     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235526     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235527     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235528     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235529     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235530     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235531     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235532     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235533     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235534     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235535     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235536     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235537     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235538     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235539     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235540     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235541     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235542     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235543     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235544     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235545     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
-235546     batch    Spark  tsaglik  PENDING       0:00   5:00:00      4 (Dependency)
+Running benchmark with 1 nodes and 2 tasks
+Submitted batch job 237456
+Submitted batch job 237457
+Submitted batch job 237458
+Submitted batch job 237459
+Submitted batch job 237460
+Submitted batch job 237461
+Submitted batch job 237462
+Submitted batch job 237463
+Submitted batch job 237464
+Submitted batch job 237465
+Submitted batch job 237466
+Submitted batch job 237467
+Submitted batch job 237468
+Submitted batch job 237469
+Submitted batch job 237470
+Submitted batch job 237471
+Submitted batch job 237472
+Submitted batch job 237473
+Submitted batch job 237474
+Submitted batch job 237475
+Submitted batch job 237476
+Submitted batch job 237477
+Submitted batch job 237478
+Submitted batch job 237479
+Submitted batch job 237480
+Submitted batch job 237481
+Submitted batch job 237482
+Submitted batch job 237483
+Submitted batch job 237484
+Submitted batch job 237485
+Running benchmark with 1 nodes and 3 tasks
+Submitted batch job 237486
+Submitted batch job 237487
+Submitted batch job 237488
+Submitted batch job 237489
+Submitted batch job 237490
+Submitted batch job 237491
+Submitted batch job 237492
+Submitted batch job 237493
+Submitted batch job 237494
+Submitted batch job 237495
+Submitted batch job 237496
+Submitted batch job 237497
+Submitted batch job 237498
+Submitted batch job 237499
+Submitted batch job 237500
+Submitted batch job 237501
+Submitted batch job 237502
+Submitted batch job 237503
+Submitted batch job 237504
+Submitted batch job 237505
+Submitted batch job 237506
+Submitted batch job 237507
+Submitted batch job 237508
+Submitted batch job 237509
+Submitted batch job 237510
+Submitted batch job 237511
+Submitted batch job 237512
+Submitted batch job 237513
+Submitted batch job 237514
+Submitted batch job 237515
+Running benchmark with 1 nodes and 4 tasks
+Submitted batch job 237516
+Submitted batch job 237517
+Submitted batch job 237518
+Submitted batch job 237519
+Submitted batch job 237520
+Submitted batch job 237521
+Submitted batch job 237522
+Submitted batch job 237523
+Submitted batch job 237524
+Submitted batch job 237525
+Submitted batch job 237526
+Submitted batch job 237527
+Submitted batch job 237528
+Submitted batch job 237529
+Submitted batch job 237530
+Submitted batch job 237531
+Submitted batch job 237532
+Submitted batch job 237533
+Submitted batch job 237534
+Submitted batch job 237535
+Submitted batch job 237536
+Submitted batch job 237537
+Submitted batch job 237538
+Submitted batch job 237539
+Submitted batch job 237540
+Submitted batch job 237541
+Submitted batch job 237542
+Submitted batch job 237543
+Submitted batch job 237544
+Submitted batch job 237545
+Running benchmark with 2 nodes and 3 tasks
+Submitted batch job 237546
+Submitted batch job 237547
+Submitted batch job 237548
+Submitted batch job 237549
+Submitted batch job 237550
+Submitted batch job 237551
+Submitted batch job 237552
+Submitted batch job 237553
+Submitted batch job 237554
+Submitted batch job 237555
+Submitted batch job 237556
+Submitted batch job 237557
+Submitted batch job 237558
+Submitted batch job 237559
+Submitted batch job 237560
+Submitted batch job 237561
+Submitted batch job 237562
+Submitted batch job 237563
+Submitted batch job 237564
+Submitted batch job 237565
+Submitted batch job 237566
+Submitted batch job 237567
+Submitted batch job 237568
+Submitted batch job 237569
+Submitted batch job 237570
+Submitted batch job 237571
+Submitted batch job 237572
+Submitted batch job 237573
+Submitted batch job 237574
+Submitted batch job 237575
+Running benchmark with 2 nodes and 4 tasks
+Submitted batch job 237576
+Submitted batch job 237577
+Submitted batch job 237578
+Submitted batch job 237579
+Submitted batch job 237580
+Submitted batch job 237581
+Submitted batch job 237582
+Submitted batch job 237583
+Submitted batch job 237584
+Submitted batch job 237585
+Submitted batch job 237586
+Submitted batch job 237587
+Submitted batch job 237588
+Submitted batch job 237589
+Submitted batch job 237590
+Submitted batch job 237591
+Submitted batch job 237592
+Submitted batch job 237593
+Submitted batch job 237594
+Submitted batch job 237595
+Submitted batch job 237596
+Submitted batch job 237597
+Submitted batch job 237598
+Submitted batch job 237599
+Submitted batch job 237600
+Submitted batch job 237601
+Submitted batch job 237602
+Submitted batch job 237603
+Submitted batch job 237604
+Submitted batch job 237605
+Running benchmark with 3 nodes and 3 tasks
+Submitted batch job 237606
+Submitted batch job 237607
+Submitted batch job 237608
+Submitted batch job 237609
+Submitted batch job 237610
+Submitted batch job 237611
+Submitted batch job 237612
+Submitted batch job 237613
+Submitted batch job 237614
+Submitted batch job 237615
+Submitted batch job 237616
+Submitted batch job 237617
+Submitted batch job 237618
+Submitted batch job 237619
+Submitted batch job 237620
+Submitted batch job 237621
+Submitted batch job 237622
+Submitted batch job 237623
+Submitted batch job 237624
+Submitted batch job 237625
+Submitted batch job 237626
+Submitted batch job 237627
+Submitted batch job 237628
+Submitted batch job 237629
+Submitted batch job 237630
+Submitted batch job 237631
+Submitted batch job 237632
+Submitted batch job 237633
+Submitted batch job 237634
+Submitted batch job 237635
+Running benchmark with 3 nodes and 4 tasks
+Submitted batch job 237636
+Submitted batch job 237637
+Submitted batch job 237638
+Submitted batch job 237639
+Submitted batch job 237640
+Submitted batch job 237641
+Submitted batch job 237642
+Submitted batch job 237643
+Submitted batch job 237644
+Submitted batch job 237645
+Submitted batch job 237646
+Submitted batch job 237647
+Submitted batch job 237648
+Submitted batch job 237649
+Submitted batch job 237650
+Submitted batch job 237651
+Submitted batch job 237652
+Submitted batch job 237653
+Submitted batch job 237654
+Submitted batch job 237655
+Submitted batch job 237656
+Submitted batch job 237657
+Submitted batch job 237658
+Submitted batch job 237659
+Submitted batch job 237660
+Submitted batch job 237661
+Submitted batch job 237662
+Submitted batch job 237663
+Submitted batch job 237664
+Submitted batch job 237665
+Running benchmark with 4 nodes and 3 tasks
+Submitted batch job 237666
+Submitted batch job 237667
+Submitted batch job 237668
+Submitted batch job 237669
+Submitted batch job 237670
+Submitted batch job 237671
+Submitted batch job 237672
+Submitted batch job 237673
+Submitted batch job 237674
+Submitted batch job 237675
+Submitted batch job 237676
+Submitted batch job 237677
+Submitted batch job 237678
+Submitted batch job 237679
+Submitted batch job 237680
+Submitted batch job 237681
+Submitted batch job 237682
+Submitted batch job 237683
+Submitted batch job 237684
+Submitted batch job 237685
+Submitted batch job 237686
+Submitted batch job 237687
+Submitted batch job 237688
+Submitted batch job 237689
+Submitted batch job 237690
+Submitted batch job 237691
+Submitted batch job 237692
+Submitted batch job 237693
+Submitted batch job 237694
+Submitted batch job 237695
+Running benchmark with 4 nodes and 4 tasks
+Submitted batch job 237696
+Submitted batch job 237697
+Submitted batch job 237698
+Submitted batch job 237699
+Submitted batch job 237700
+Submitted batch job 237701
+Submitted batch job 237702
+Submitted batch job 237703
+Submitted batch job 237704
+Submitted batch job 237705
+Submitted batch job 237706
+Submitted batch job 237707
+Submitted batch job 237708
+Submitted batch job 237709
+Submitted batch job 237710
+Submitted batch job 237711
+Submitted batch job 237712
+Submitted batch job 237713
+Submitted batch job 237714
+Submitted batch job 237715
+Submitted batch job 237716
+Submitted batch job 237717
+Submitted batch job 237718
+Submitted batch job 237719
+Submitted batch job 237720
+Submitted batch job 237721
+Submitted batch job 237722
+Submitted batch job 237723
+Submitted batch job 237724
+Submitted batch job 237725

@@ -140,7 +140,7 @@ export SPARK_MASTER_WEBUI_PORT=8082
 
 # Custom launcher for the slaves
 SPARK_SLAVE_LAUNCHER=${SPARK_WORKER_DIR}/spark-start-slaves-${SLURM_JOBID}.sh
-OUTPUTFILE=result_${SLURM_JOB_NAME}-${SLURM_JOB_ID}.out
+OUTPUTFILE=result_${SLURM_JOB_NAME}-${SLURM_JOB_ID}-ntasks-${SLURM_NTASKS}.out
 
 ###############################################
 ##   --------------------------------------  ##
@@ -218,6 +218,10 @@ fi
 ##    3. Submit a task to the Spark cluster    ##
 ##    --------------------------------------   ##
 #################################################
+
+# Delete previous output folder for disk quota concerns
+rm -r ./data/terasort_out
+
 if [ -n "${MODE_INTERACTIVE}" ]; then
     echo "=========================================="
     echo "        *** Interactive mode ***"
