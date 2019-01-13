@@ -39,6 +39,7 @@ def data_generate():
                 DATAFILE.write(jobID+","+str(ntasks[counter//noe])+","+str(time)+"\n")
     DATAFILE.close()
 
+
 def data_plot():
     #my_data = np.genfromtxt(DATAFILENAME, delimiter=',')
     df = pd.read_csv(DATAFILENAME, sep=',', header=None)
