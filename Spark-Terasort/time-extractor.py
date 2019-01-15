@@ -68,5 +68,5 @@ def data_plot():
 
 
 if __name__ == '__main__':
-    #data_generate()
+    data_generate()
     data_plot()
