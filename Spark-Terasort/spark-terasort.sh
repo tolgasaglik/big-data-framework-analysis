@@ -7,7 +7,7 @@
 # - https://hpc.uni.lu/users/docs/slurm_launchers.html#apache-spark
 ##################################################################
 #SBATCH -J Spark
-#SBATCH --time=0-05:00:00   # 5 hour
+#SBATCH --time=0-00:10:00   # 10 min
 #SBATCH --partition=batch
 #SBATCH --qos qos-batch
 #
@@ -140,7 +140,7 @@ export SPARK_MASTER_WEBUI_PORT=8082
 
 # Custom launcher for the slaves
 SPARK_SLAVE_LAUNCHER=${SPARK_WORKER_DIR}/spark-start-slaves-${SLURM_JOBID}.sh
-OUTPUTFILE=result_${SLURM_JOB_NAME}-${SLURM_JOB_ID}-ntasks-${SLURM_NTASKS}.out
+OUTPUTFILE=${SLURM_NTASKS}-tasks-result_${SLURM_JOB_NAME}-${SLURM_JOB_ID}.out
 
 ###############################################
 ##   --------------------------------------  ##
@@ -220,7 +220,8 @@ fi
 #################################################
 
 # Delete previous output folder for disk quota concerns
-rm -r ./data/terasort_out
+#rm -r ./data/terasort_out
+rm -r /scratch/users/tsaglik/data/terasort_out
 
 if [ -n "${MODE_INTERACTIVE}" ]; then
     echo "=========================================="
@@ -257,7 +258,7 @@ spark-submit \
       --total-executor-cores ${SPARK_TOTAL_EXECUTER_CORES} \
       --class com.github.ehiggs.spark.terasort.TeraSort \
       ${APP} \
-      $HOME/data/terasort_in $HOME/data/terasort_out >> ${OUTPUTFILE}
+      $HOME/data/terasort_in /scratch/users/tsaglik/data/terasort_out >> ${OUTPUTFILE}
 
 
 EOF
@@ -271,7 +272,7 @@ time spark-submit \
       --total-executor-cores ${SPARK_TOTAL_EXECUTER_CORES} \
       --class com.github.ehiggs.spark.terasort.TeraSort \
       ${APP} \
-      $HOME/terasort-30runs/data/terasort_in $HOME/terasort-30runs/data/terasort_out >> ${OUTPUTFILE}
+      $HOME/terasort-30runs/data/terasort_in /scratch/users/tsaglik/data/terasort_out >> ${OUTPUTFILE}
 
 
 echo "==========================================="

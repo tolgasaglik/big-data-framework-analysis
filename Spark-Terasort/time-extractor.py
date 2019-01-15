@@ -15,20 +15,21 @@ def data_generate():
     jobIDarray = []
     jobNTASKSarray = []
     jobTIMEarray = []
-    ntasks = [2,3,4,6,8,9,12,12,16]
+    ntasks = [2,3,4,6,8,9,12,12.1,16]
+    ntasks =["1x2","1x3","1x4","2x3","2x4","3x3","3x4","4x3","4x4"]
     counter = 0
     noe = 30
-    directory = os.fsencode(".")
-    for file in os.listdir(directory):
+    directory = os.fsencode("./experiment-results")
+    for file in sorted(os.listdir(directory)):
         filename = os.fsdecode(file)
-        if str(filename[0:15]) == "result_Spark-23":
-            #print(filename[0:15])
-            counter += 1
+        if str(filename[0:13]) == "result_Spark-":
+            #print(filename[0:13])
             jobID = filename[13:19]
             #print(jobID)
             jobIDarray.append(jobID)
             jobNTASKSarray.append(ntasks[counter//noe])
-            with open(filename) as f:
+            filepath = os.path.join(directory, file)
+            with open(filepath) as f:
                 content = f.readlines()
             index = [x for x in range(len(content)) if QUERY in content[x]]
             f.close()
@@ -37,6 +38,7 @@ def data_generate():
                 jobTIMEarray.append(time)
                 print(jobID+","+str(ntasks[counter//noe])+","+str(time))
                 DATAFILE.write(jobID+","+str(ntasks[counter//noe])+","+str(time)+"\n")
+            counter += 1
     DATAFILE.close()
 
 
@@ -51,17 +53,20 @@ def data_plot():
     for i in range(length):
         x.append(average[1][i])
         y.append(average[2][i])
-    plt.plot(x, y ,'-')
+    plt.plot(x, y, '-')
     plt.xticks(x)
     plt.title("TeraSort Computation Times")
-    plt.xlabel("Number of Tasks in Parallel")
-    plt.ylabel("Computation Time(s)")
+    plt.xlabel("Nodes x Task-per-Node")
+    plt.ylabel("Elapsed Time(s)")
     #plt.legend(legend_list, loc='upper right')
-    plt.savefig('plots/spark-terasort.png', dpi=500)
+    dir = "./plots"
+    plot_name = "spark-terasort.png"
+    filepath = os.path.join(dir, plot_name)
+    plt.savefig(filepath, dpi=500)
     #plt.show()
     plt.clf()
 
 
 if __name__ == '__main__':
-    data_generate()
+    #data_generate()
     data_plot()

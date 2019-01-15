@@ -15,7 +15,7 @@
 ###SBATCH --ntasks-per-node=3
 ### -c, --cpus-per-task=<ncpus>
 ###     (multithreading) Request that ncpus be allocated per process
-#SBATCH -c 6
+#SBATCH -c 7
 #SBATCH --exclusive
 #SBATCH --mem=0
 #SBATCH --dependency=singleton
@@ -254,7 +254,7 @@ time spark-submit \
       --total-executor-cores ${SPARK_TOTAL_EXECUTER_CORES} \
       --class com.github.ehiggs.spark.terasort.TeraGen \
       ${APP} ${OPTS} \
-      $HOME/terasort-30times/data/terasort_in > ${OUTPUTFILE}
+      $HOME/terasort-30runs/data/terasort_in > ${OUTPUTFILE}
 
 EOF
 
@@ -267,7 +267,7 @@ time spark-submit \
       --total-executor-cores ${SPARK_TOTAL_EXECUTER_CORES} \
       --class com.github.ehiggs.spark.terasort.TeraGen \
       ${APP} ${OPTS} \
-      $HOME/data/terasort_in > ${OUTPUTFILE}
+      $HOME/terasort-30runs/data/terasort_in >> ${OUTPUTFILE}
 
 # sleep 1
 
