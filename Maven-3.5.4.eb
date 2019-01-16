@@ -1,0 +1,26 @@
+easyblock = 'PackedBinary'
+
+name = 'Maven'
+version = '3.5.4'
+
+homepage = 'http://maven.apache.org/index.html'
+description = """Binary maven install, Apache Maven is a software project management and comprehension tool. Based on
+the concept of a project object model (POM), Maven can manage a project's build, reporting and documentation from a
+central piece of information.
+"""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+sources = ['apache-maven-%(version)s-bin.tar.gz']
+source_urls = ['http://apache.org/dist/maven/maven-%(version_major)s/%(version)s/binaries/']
+checksums = [('sha512','2a803f578f341e164f6753e410413d16ab60fabe31dc491d1fe35c984a5cce696bc71f57757d4538fe7738be04065a216f3ebad4ef7e0ce1bb4c51bc36d6be86')]
+
+dependencies = [('Java', '1.8.0_162')]
+
+
+sanity_check_paths = {
+    'files': ['bin/mvn'],
+    'dirs': [],
+}
+
+moduleclass = 'devel'

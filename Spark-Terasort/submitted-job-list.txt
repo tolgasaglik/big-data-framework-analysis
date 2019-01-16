@@ -437,7 +437,7 @@ Submitted batch job 241362
 Submitted batch job 241363
 Submitted batch job 241364
 Submitted batch job 241365
-Running benchmark with 3 nodes and 3 tasks
+Running benchmark with 3 nodes and 3 tasks  [086,088,120]
 Submitted batch job 241366
 Submitted batch job 241367
 Submitted batch job 241368
