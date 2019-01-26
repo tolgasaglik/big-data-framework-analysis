@@ -62,7 +62,7 @@ def data_plot():
         x.append(average[1][i])
         y.append(average[2][i])
     plt.plot(x, y, '-')
-    plt.xticks(x)
+    plt.xticks(x, rotation='horizontal')
     plt.title("TeraSort Computation Times")
     plt.xlabel("Nodes x Task-per-Node")
     plt.ylabel("Elapsed Time(s)")
@@ -86,12 +86,14 @@ def io_rate_plot():
         x2.append("%.2f" %(average[2][i]/average[3][i]))
     average.plot(y=[2, 3], kind='bar', label=["Write", "Read"])
     plt.title("Spark I/O Rate")
-    plt.xticks(average.index, x2)
-    plt.show()
+    plt.xticks(average.index, x2, rotation='horizontal')
+    plt.xlabel("Write Time/Read Time")
+    plt.ylabel("Elapsed Time(s)")
     dir = "./plots"
     plot_name = "spark-io-rates.png"
     filepath = os.path.join(dir, plot_name)
     plt.savefig(filepath, dpi=500)
+    plt.show()
     plt.clf()
 
 
@@ -109,7 +111,7 @@ def thourghput():
     plt.xlabel("Nodes X Task-per-Node")
     plt.ylabel("Throughput(Mb/s)")
     plt.title("Spark Throughput")
-    plt.xticks(average.index, x)
+    plt.xticks(average.index, x, rotation='horizontal')
     dir = "./plots"
     plot_name = "spark-throughput.png"
     filepath = os.path.join(dir, plot_name)
@@ -123,18 +125,23 @@ def statistics():
     desc = df[2].groupby(df[1]).describe()
     fig, ax = plt.subplots(figsize=(10, 8))
     plt.suptitle('')
-    data.boxplot(column=['SepalLength'], by='Name', ax=ax)
-    bp = df.boxplot(column=2, by=1, ax=ax)
+    df.rename(columns={2: 'Time'}, inplace=True)
+    bp = df.boxplot(column=['Time'], by=[1], ax=ax)
     ax.set_xlabel('Nodes X Task-per-Node')
+    ax.set_ylabel('Elapsed Time(s)')
     fig = np.asarray(bp).reshape(-1)[0].get_figure()
     fig.suptitle('Boxplot for Runtimes')
+    dir = "./plots"
+    plot_name = "spark-boxplot.png"
+    filepath = os.path.join(dir, plot_name)
+    plt.savefig(filepath, dpi=500)
     plt.show()
-
+    plt.clf()
 
 
 if __name__ == '__main__':
-    data_generate()
-    data_plot()
+    # data_generate()
+    # data_plot()
     statistics()
-    io_rate_plot()
-    thourghput()
+    # io_rate_plot()
+    # thourghput()
