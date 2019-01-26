@@ -97,7 +97,7 @@ def io_rate_plot():
     plt.clf()
 
 
-def thourghput():
+def throughput():
     DataInMB = 102400
     df = pd.read_csv(DATAFILENAME, sep=',', header=None)
     average = df.groupby(1, as_index=False).agg({2: "mean", 3: "mean"})
@@ -140,8 +140,8 @@ def statistics():
 
 
 if __name__ == '__main__':
-    # data_generate()
-    # data_plot()
+    data_generate()
+    data_plot()
     statistics()
-    # io_rate_plot()
-    # thourghput()
+    io_rate_plot()
+    throughput()
