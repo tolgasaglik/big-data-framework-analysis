@@ -221,7 +221,7 @@ fi
 
 # Delete previous output folder for disk quota concerns
 #rm -r ./data/terasort_out
-rm -r /scratch/users/tsaglik/data/terasort_out
+rm -r /home/users/tsaglik/data/terasort_out
 
 if [ -n "${MODE_INTERACTIVE}" ]; then
     echo "=========================================="
@@ -272,7 +272,7 @@ time spark-submit \
       --total-executor-cores ${SPARK_TOTAL_EXECUTER_CORES} \
       --class com.github.ehiggs.spark.terasort.TeraSort \
       ${APP} \
-      $HOME/terasort-30runs/data/terasort_in /scratch/users/tsaglik/data/terasort_out >> ${OUTPUTFILE}
+      /home/users/tsaglik/terasort-30runs/data/terasort_in /home/users/tsaglik/data/terasort_out >> /home/users/tsaglik/data/${OUTPUTFILE}
 
 
 echo "==========================================="
