@@ -1,0 +1,33 @@
+easyblock = 'PackedBinary'
+
+name = 'Storm'
+version = '1.2.2'
+
+homepage = 'https://storm.apache.org/'
+description = """Storm Apache"""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+#toolchain = {'name': 'intel', 'version': '2017a'}
+
+source_urls = ['http://www-eu.apache.org/dist/storm/apache-storm-%(version)s/']
+
+sources = ['apache-storm-%(version)s-src.tar.gz']
+# checksums = ['9a05161ae608d26e2a3d02bc45039ce8a249d37ba997e5176b07fec9221afca2']
+dependencies = [
+    ('Java','1.8.0_162'),
+]
+builddependencies = [
+#    ('Java','1.7.0_80'),
+#    ('Maven', '3.5.2')
+]
+
+install_cmd = "cd apache-storm-1.2.2/ && mvn clean install -DskipTests=true && cp -rf * %(installdir)s/" 
+
+sanity_check_paths = {
+ 'files': ['bin/storm'],
+ 'dirs': [],
+}
+
+parallel = 1
+
+moduleclass = 'tools'

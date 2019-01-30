@@ -1,0 +1,30 @@
+easyblock = 'Tarball'
+
+name = 'Samza'
+version = '0.14.1'
+versionsuffix = 'tools'
+
+homepage = 'http://samza.apache.org'
+description="""Apache Samza is a framework and distributed processing engine for stateful computations over unbounded and bounded data streams."""
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+sources =['%(namelower)s-%(version)s-%(versionsuffix)s.tgz']
+source_urls = [
+#http://www-us.apache.org/dist/samza/0.14.1/samza-tools-0.14.1.tgz
+#http://www.apache.org/dyn/closer.lua/samza/0.14.1
+    'http://www-us.apache.org/dist/%(namelower)s/%(versions)s/%(namelower)s-%(versionsuffixlower)s-%(versions)s/',
+    'http://www.us.apache.org/dist/%(namelower)s/%(namelower)s-%(version)s/',
+]
+checksums = [('sha512','1f2bbad937cd25fc698a07d3bd1f7c45e3f09e9c72082385676e3c67326554e0718ec8fcd2272a06a8d3910d95fdb4bf9d3c72a8afa4c6de37180761a0740c86')]
+
+dependencies = [('Java', '1.8.0_162')]
+
+sanity_check_paths = {
+    'dirs': ['conf'],
+    'files':['bin/flink']
+}
+
+modextrapaths = {'PYTHONPATH': 'python'}
+
+moduleclass = 'devel'

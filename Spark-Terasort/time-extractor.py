@@ -279,7 +279,7 @@ def lscratchVSirisgpfs_plot():
     ind = np.arange(length)  # the x locations for the groups
     width = 0.35  # the width of the bars: can also be len(x) sequence
     p1 = plt.bar(ind, average[1], width, yerr=std[1])
-    #p2 = plt.bar(ind, average[2], width, bottom=average[3], yerr=std[2])
+    # p2 = plt.bar(ind, average[2], width, bottom=average[3], yerr=std[2])
     x = []
     for i in range(length):
         x.append(average[0][i])
@@ -288,23 +288,21 @@ def lscratchVSirisgpfs_plot():
     plt.xlabel("File System")
     plt.ylabel("Elapsed Time(s)")
     dir = "./plots"
-    #plt.legend(p1[0], 'Computation Time')
     plot_name = "spark-lscratchVSirisgpfs.png"
     filepath = os.path.join(dir, plot_name)
     plt.savefig(filepath, dpi=500)
     plt.show()
 
 
-
 if __name__ == '__main__':
-    # data_generate()
+    data_generate()
     data_plot()
-    # statistics()
-    # io_rate_plot()
-    # throughput()
-    # throughput_boxplot()
-    # throughput_per_worker()
-    # lag()
-    # sort_merge()
-    # lscratchVSirisgpfsGenerate()
-    # lscratchVSirisgpfs_plot()
+    statistics()
+    io_rate_plot()
+    throughput()
+    throughput_boxplot()
+    throughput_per_worker()
+    lag()
+    sort_merge()
+    lscratchVSirisgpfsGenerate()
+    lscratchVSirisgpfs_plot()
