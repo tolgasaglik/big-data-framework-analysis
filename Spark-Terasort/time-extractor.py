@@ -54,25 +54,23 @@ def data_plot():
     df = pd.read_csv(DATAFILENAME, sep=',', header=None)
     #average = df.groupby(1)[2].mean()
     average = df.groupby(1, as_index=False).agg({2: "mean"})
-
+    std = df.groupby(1, as_index=False).agg({2: "std"})
     length = average[1].count()
-    x=[]
-    y=[]
+    x = []
     for i in range(length):
         x.append(average[1][i])
-        y.append(average[2][i])
-    plt.plot(x, y, '-')
-    plt.xticks(x, rotation='horizontal')
-    plt.title("TeraSort Computation Times")
-    plt.xlabel("Nodes x Workers-per-Node")
+    plt.bar(average.index, average[2], width=0.35, yerr=std[2])
+    plt.xticks(average.index, x, rotation='horizontal')
+    plt.title("Spark TeraSort")
+    plt.xlabel("Nodes X Workers-per-Node")
     plt.ylabel("Elapsed Time(s)")
-    #plt.legend(legend_list, loc='upper right')
     dir = "./plots"
-    plot_name = "spark-terasort.png"
+    plot_name = "spark_runtime.png"
     filepath = os.path.join(dir, plot_name)
     plt.savefig(filepath, dpi=500)
     plt.show()
     plt.clf()
+
 
 
 def io_rate_plot():
@@ -101,6 +99,7 @@ def throughput():
     DataInMB = 102400
     df = pd.read_csv(DATAFILENAME, sep=',', header=None)
     average = df.groupby(1, as_index=False).agg({2: "mean", 3: "mean"})
+    nWorkers = [2, 3, 4, 6, 8, 9, 12, 12, 16]
     std = df.groupby(1, as_index=False).agg({2: "std"})
     length = average[1].count()
     x = []
@@ -135,8 +134,9 @@ def throughput_per_worker():
     average[2] = average[2]/nWorkers
     average[3] = average[3].apply(lambda x: DataInMB/x)
     std = df.groupby(1, as_index=False).agg({2: "std"})
+    nWorkers.reverse()
     #average.plot(y=[2, 3], kind='bar', label=["Job", "ResultStage"])
-    average.plot(y=[2],kind='bar', color="orange", label=["Throughput/Worker"], yerr=std[2])
+    average.plot(y=[2],kind='bar', color="orange", label=["Throughput/Worker"], yerr=std[2]/nWorkers)
     plt.xlabel("Nodes X Workers-per-Node")
     plt.ylabel("Throughput(Mb/s)")
     plt.title("Spark Overhead Management")
@@ -295,9 +295,10 @@ def lscratchVSirisgpfs_plot():
     plt.show()
 
 
+
 if __name__ == '__main__':
     # data_generate()
-    # data_plot()
+    data_plot()
     # statistics()
     # io_rate_plot()
     # throughput()
@@ -305,5 +306,5 @@ if __name__ == '__main__':
     # throughput_per_worker()
     # lag()
     # sort_merge()
-    lscratchVSirisgpfsGenerate()
-    lscratchVSirisgpfs_plot()
+    # lscratchVSirisgpfsGenerate()
+    # lscratchVSirisgpfs_plot()
